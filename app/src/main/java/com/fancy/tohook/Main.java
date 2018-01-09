@@ -37,13 +37,13 @@ public class Main implements IXposedHookLoadPackage {
                         XposedBridge.log("XXX class name:"+clazz.getName());
 
                         Field field = clazz.getDeclaredField("btn");
-                        Field field2=clazz.getDeclaredField("edt");
+                        Field field2=clazz.getDeclaredField("edit");//控件变量名
 
                         field.setAccessible(true);
-                        field.setAccessible(true);
+                        field2.setAccessible(true);
 
                         Button btn = (Button) field.get(param.thisObject);
-                        EditText edt=(EditText) field.get(param.thisObject);
+                        EditText edt=(EditText) field2.get(param.thisObject);
                         edt.setText("BeenHook");
                         btn.setEnabled(true);
 
